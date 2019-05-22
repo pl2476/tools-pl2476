@@ -8,36 +8,38 @@
  *  @param obj.jsonData 是否深复制数据（默认是true）
  * @return {Array} arr
  */
-const getTreeArr = obj => {
+const getTreeArr = (param) => {
+  const obj = param;
   if (!Array.isArray(obj.data)) {
-    console.log("getTreeArr=>请传入数组");
     return [];
   }
   obj.jsonData = obj.jsonData === false ? obj.jsonData : true;
   const arr = obj.jsonData ? JSON.parse(JSON.stringify(obj.data)) : obj.data;
   const arr1 = [];
   // 将数据处理成数状结构
-  arr.forEach(item => {
+  arr.forEach((arrItem) => {
+    const item = arrItem;
     let index = 0;
     item.children = [];
-    arr.forEach(item1 => {
+    arr.forEach((item1) => {
       // 得到树结构关系
       if (item[obj.key] === item1[obj.pKey]) {
         item.children.push(item1);
       }
       // 判断根节点
       if (item1[obj.key] !== item[obj.pKey]) {
-        index++;
+        index += 1;
       }
     });
     // 没传入根节点，根据当前数据结构得到根节点
-    if (!("rootPValue" in obj) && index === arr.length) {
+    if (!('rootPValue' in obj) && index === arr.length) {
       arr1.push(item);
     }
   });
   // 传入根节点，根据传入的根节点组成树结构
-  if ("rootPValue" in obj) {
-    arr.forEach(item => {
+  if ('rootPValue' in obj) {
+    arr.forEach((arrItem) => {
+      const item = arrItem;
       if (item[obj.pKey] === obj.rootPValue) {
         arr1.push(item);
       }
