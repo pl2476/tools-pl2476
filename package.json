@@ -1,0 +1,35 @@
+{
+  "name": "tools",
+  "version": "1.0.0",
+  "description": "js tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cross-env BABEL_ENV=production babel src --out-dir lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pl2476/tools.git"
+  },
+  "keywords": [
+    "tools"
+  ],
+  "author": "Light",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pl2476/tools/issues"
+  },
+  "homepage": "https://github.com/pl2476/tools#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-minify": "^0.5.0",
+    "cross-env": "^5.2.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4"
+  }
+}
