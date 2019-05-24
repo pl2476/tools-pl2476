@@ -8,7 +8,8 @@
     "build": "cross-env BABEL_ENV=development babel src --out-dir lib && cd test && browserify tests.js > index.js",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "build:examples": "browserify index.js -p esmify > bundle.js"
+    "build:examples": "browserify index.js -p esmify > bundle.js",
+    "server:open": "open http://localhost:9090 && http-server -p 9090 test/"
   },
   "repository": {
     "type": "git",
