@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --require @babel/polyfill --recursive",
-    "build": "cross-env BABEL_ENV=development babel src --out-dir lib && browserify tests.js > index.js",
+    "build": "cross-env BABEL_ENV=development babel src --out-dir lib && cd test && browserify tests.js > index.js",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "build:examples": "browserify index.js -p esmify > bundle.js"
