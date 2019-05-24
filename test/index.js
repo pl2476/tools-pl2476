@@ -1,3 +1,4 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -66,3 +67,20 @@ var utils = {
 var _default = utils;
 exports["default"] = _default;
 module.exports = exports.default;
+},{}],2:[function(require,module,exports){
+const assert = chai.assert;
+const utils = require('../lib/index.js')
+
+describe("#tests.js", function() {
+  it("getTreeArr", () => {
+    const list = [{ id: 1, pid: 0, name: 11 }, { id: 2, pid: 1, name: 2 }];
+    const result = [
+      { id: 1, pid: 0, name: 11, children: [{ id: 2, pid: 1, name: 2 ,children: []}] }
+    ];
+    console.log(utils.getTreeArr({ key: 'id', pKey: 'pid', data: list }));
+    const flag = _.isEqual(utils.getTreeArr({ key: 'id', pKey: 'pid', data: list }), result)
+    assert.strictEqual(flag, true);
+  });
+});
+
+},{"../lib/index.js":1}]},{},[2]);
