@@ -11,4 +11,10 @@ describe("#tests.js", function() {
     const flag = _.isEqual(utils.getTreeArr({ key: 'id', pKey: 'pid', data: list }), result)
     assert.strictEqual(flag, true);
   });
+  it("numToThousands", () => {
+    const num = 9012.0520;
+    const result = '9,012.0520';
+    const flag = _.isEqual(utils.numToThousands(num), result)
+    assert.strictEqual(flag, true);
+  });
 });

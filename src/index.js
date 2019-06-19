@@ -48,8 +48,19 @@ const getTreeArr = (param) => {
   return arr1;
 };
 
+/**
+ * 数字转换成千分位表示
+ * @param {Number} num
+ * @return {String} str
+ */
+const numToThousands = (num) => {
+  const str = (num.toString().indexOf('.') !== -1) ? num.toLocaleString() : num.toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+  return str;
+};
+
 const utils = {
   getTreeArr,
+  numToThousands,
 };
 
 export default utils;

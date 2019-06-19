@@ -60,9 +60,21 @@ var getTreeArr = function getTreeArr(param) {
 
   return arr1;
 };
+/**
+ * 数字转换成千分位表示
+ * @param {Number} num
+ * @return {String} str
+ */
+
+
+var numToThousands = function numToThousands(num) {
+  var str = num.toString().indexOf('.') !== -1 ? num.toLocaleString() : num.toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+  return str;
+};
 
 var utils = {
-  getTreeArr: getTreeArr
+  getTreeArr: getTreeArr,
+  numToThousands: numToThousands
 };
 var _default = utils;
 exports["default"] = _default;
@@ -79,6 +91,12 @@ describe("#tests.js", function() {
     ];
     console.log(utils.getTreeArr({ key: 'id', pKey: 'pid', data: list }));
     const flag = _.isEqual(utils.getTreeArr({ key: 'id', pKey: 'pid', data: list }), result)
+    assert.strictEqual(flag, true);
+  });
+  it("numToThousands", () => {
+    const num = 9012.0520;
+    const result = '9,012.052';
+    const flag = _.isEqual(utils.numToThousands(num), result)
     assert.strictEqual(flag, true);
   });
 });
